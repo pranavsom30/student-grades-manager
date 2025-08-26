@@ -1,41 +1,50 @@
+import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("🎓 Welcome to Student Grades Manager!");
-        Scanner scanner = new Scanner(System.in);
+    static List<String> grades = new ArrayList<>();
 
-        // Placeholder menu
+    public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        loadGrades(); // Load from file at start
+
         boolean running = true;
         while (running) {
-            System.out.println("\nChoose an option:");
-            System.out.println("1. Add Student Grade");
-            System.out.println("2. View Grades");
-            System.out.println("3. Calculate Average");
-            System.out.println("4. Exit");
-            System.out.print("👉 ");
-
+            System.out.println("1. Add Grade  2. View Grades  3. Exit");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // clear buffer
+            scanner.nextLine();
 
-            switch (choice) {
+            switch(choice) {
                 case 1:
-                    System.out.println("📌 Feature not yet implemented (Add Grade).");
+                    System.out.print("Enter grade: ");
+                    String grade = scanner.nextLine();
+                    grades.add(grade);
+                    saveGrades(); // Save to file
                     break;
                 case 2:
-                    System.out.println("📌 Feature not yet implemented (View Grades).");
+                    System.out.println("Grades: " + grades);
                     break;
                 case 3:
-                    System.out.println("📌 Feature not yet implemented (Calculate Average).");
-                    break;
-                case 4:
                     running = false;
-                    System.out.println("👋 Exiting... Goodbye!");
                     break;
-                default:
-                    System.out.println("⚠️ Invalid option. Try again.");
             }
         }
         scanner.close();
+    }
+
+    static void saveGrades() throws IOException {
+        try (PrintWriter pw = new PrintWriter(new FileWriter("grades.txt"))) {
+            for (String g : grades) pw.println(g);
+        }
+    }
+
+    static void loadGrades() throws IOException {
+        File file = new File("grades.txt");
+        if (!file.exists()) return;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null) grades.add(line);
+        }
     }
 }
