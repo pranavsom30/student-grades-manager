@@ -2,17 +2,19 @@
 
 A simple Java console application for managing student grades, designed to help students and teachers track academic performance efficiently.
 
-## ✨ Features
 
-- Add, update, and view student grades
-- Calculate averages and overall class performance
-- Persistent data storage using File I/O
-- Uses ArrayList and HashMap for efficient data management
-- Input validation and exception handling for robustness
+## ✨ Current Features (Skeleton)
 
-## 🛠️ Tech Stack
+- Placeholder menu for adding/viewing grades and calculating averages
+- Command-line interface demonstrating user input handling
+- Modular method stubs for future functionality
 
-- Java (OOP, Collections, File I/O)
+## 🛠️ Skills Demonstrated
+
+- Java (OOP fundamentals)
+- Collections: ArrayList and HashMap
+- Command-line I/O and Scanner usage
+- Planning for file-based persistence and data management
 
 ## ⚙️ Setup Instructions
 
@@ -35,6 +37,9 @@ java Main
 
 ## 📖 Future Improvements
 
+- Implement Add/Update/View student grades
+- Calculate averages, min/max, and overall class performance
+- Persistent storage using File I/O
 - GUI interface using JavaFX or Swing
-- Export grades to CSV/Excel
 - User authentication for multiple teachers/students
+- Export grades to CSV/Excel
